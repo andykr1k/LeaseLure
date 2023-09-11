@@ -12,8 +12,8 @@ export default function Testimonial() {
                 <blockquote class="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8">
                     <div class="flex items-center gap-4">
                     <img
-                        alt="Man"
-                        src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+                        alt="Woman named Carine Krikorian"
+                        src="https://media.licdn.com/dms/image/D5603AQFPEVSdKnuGEA/profile-displayphoto-shrink_800_800/0/1689171669337?e=1700697600&v=beta&t=rAksUqcEvftrgeghPmLm-ZlHWIB5kGNX4qYkKNBbIdE"
                         class="h-14 w-14 rounded-full object-cover"
                     />
 
@@ -71,23 +71,20 @@ export default function Testimonial() {
                         </svg>
                         </div>
 
-                        <p class="mt-0.5 text-lg font-medium text-gray-900">Paul Starr</p>
+                        <p class="mt-0.5 text-lg font-medium text-gray-900">Carine Krikorian</p>
                     </div>
                     </div>
 
                     <p class="mt-4 text-gray-700">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit
-                    rerum incidunt, a consequuntur recusandae ab saepe illo est quia
-                    obcaecati neque quibusdam eius accusamus error officiis atque
-                    voluptates magnam!
+                    Easy peasy! Love this tool. As a landlord, I love using tools that save me time. 
                     </p>
                 </blockquote>
 
                 <blockquote class="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8">
                     <div class="flex items-center gap-4">
                     <img
-                        alt="Man"
-                        src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+                        alt="Man named Rick Bolander"
+                        src="https://media.licdn.com/dms/image/C4D03AQHhIDHJ6WQT7w/profile-displayphoto-shrink_800_800/0/1516246104763?e=1700697600&v=beta&t=hmYPHakeQIBSUFOn4JEVLwYDrMaNJzidFc-AooeXjgA"
                         class="h-14 w-14 rounded-full object-cover"
                     />
 
@@ -145,23 +142,20 @@ export default function Testimonial() {
                         </svg>
                         </div>
 
-                        <p class="mt-0.5 text-lg font-medium text-gray-900">Paul Starr</p>
+                        <p class="mt-0.5 text-lg font-medium text-gray-900">Rick Bolander</p>
                     </div>
                     </div>
 
                     <p class="mt-4 text-gray-700">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit
-                    rerum incidunt, a consequuntur recusandae ab saepe illo est quia
-                    obcaecati neque quibusdam eius accusamus error officiis atque
-                    voluptates magnam!
+                    Use it and abuse it. Great tool with a simple flow. Would recommend to all landlords.
                     </p>
                 </blockquote>
 
                 <blockquote class="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8">
                     <div class="flex items-center gap-4">
                     <img
-                        alt="Man"
-                        src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+                        alt="Man named Levon Ishag"
+                        src="https://media.licdn.com/dms/image/C4D03AQG9nDyvaeT4kw/profile-displayphoto-shrink_800_800/0/1516780432089?e=1700697600&v=beta&t=Qh_7vuXyPzGxKfZhJGTC2DeD372BhbGW9RepKpaODSE"
                         class="h-14 w-14 rounded-full object-cover"
                     />
 
@@ -219,15 +213,12 @@ export default function Testimonial() {
                         </svg>
                         </div>
 
-                        <p class="mt-0.5 text-lg font-medium text-gray-900">Paul Starr</p>
+                        <p class="mt-0.5 text-lg font-medium text-gray-900">Levon Ishag</p>
                     </div>
                     </div>
 
                     <p class="mt-4 text-gray-700">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit
-                    rerum incidunt, a consequuntur recusandae ab saepe illo est quia
-                    obcaecati neque quibusdam eius accusamus error officiis atque
-                    voluptates magnam!
+                    I thought I was going to have to take time to set up and pay, but everything was so smooth. Very easy tool to use and very useful.
                     </p>
                 </blockquote>
                 </div>
