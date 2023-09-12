@@ -6,7 +6,7 @@ let stripePromise;
 
 const getStripe = () => {
   if (!stripePromise) {
-    stripePromise = loadStripe(process.env.VITE_STRIPE_PUBLISH_KEY);
+    stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISH_KEY);
   }
 
   return stripePromise;
@@ -16,7 +16,7 @@ const SubCheckoutForm = () => {
   const [stripeError, setStripeError] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const item = {
-    price: process.env.VITE_SUB_STRIPE_PRICE_ID,
+    price: import.meta.env.VITE_SUB_STRIPE_PRICE_ID,
     quantity: 1
   };
 
