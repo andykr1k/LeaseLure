@@ -1,17 +1,17 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs, doc } from 'firebase/firestore/lite';
+import { getFirestore, doc } from 'firebase/firestore/lite';
 import { getAuth, GoogleAuthProvider, signInWithPopup, OAuthProvider } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
 import { motion } from 'framer-motion';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAuEL6ae7wb4KosIaNtw8Zim6_RgF3n_Gw",
-  authDomain: "leaselure.firebaseapp.com",
-  projectId: "leaselure",
-  storageBucket: "leaselure.appspot.com",
-  messagingSenderId: "819339617498",
-  appId: "1:819339617498:web:33e6f134c18c993fd631e3",
-  measurementId: "G-HQKWT01G3D"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
+  measurementId: import.meta.env.VITE_measurementId
 };
 
 const app = initializeApp(firebaseConfig);
