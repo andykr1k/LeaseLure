@@ -1,2 +1,6 @@
 export { default as CheckoutForm } from './CheckoutForm'
 export { default as SubCheckoutForm } from './SubCheckoutForm'
+export { default as Pricing } from './Pricing'
+export { default as FAQ } from './FAQ'
+export { default as Header } from './Header'
+export { default as Testimonial } from './Testimonial'
