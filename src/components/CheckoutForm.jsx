@@ -54,7 +54,7 @@ const CheckoutForm = () => {
           </div>
         </div>
         <div className="text-container">
-          <p className="text">{isLoading ? "Loading..." : "Get Started"}</p>
+          <p className="text">{isLoading ? "Loading..." : "Buy Credit"}</p>
         </div>
       </button>
     </div>

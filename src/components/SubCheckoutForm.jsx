@@ -54,7 +54,7 @@ const SubCheckoutForm = () => {
           </div>
         </div>
         <div className="text-container">
-          <p className="text">{isLoading ? "Loading..." : "Get Started"}</p>
+          <p className="text">{isLoading ? "Loading..." : "Subscribe"}</p>
         </div>
       </button>
     </div>
