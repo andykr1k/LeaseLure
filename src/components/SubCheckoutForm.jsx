@@ -12,11 +12,11 @@ const getStripe = () => {
   return stripePromise;
 };
 
-const CheckoutForm = () => {
+const SubCheckoutForm = () => {
   const [stripeError, setStripeError] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const item = {
-    price: import.meta.env.VITE_ONE_CREDIT_STRIPE_PRICE_ID,
+    price: import.meta.env.VITE_SUB_STRIPE_PRICE_ID,
     quantity: 1
   };
 
@@ -61,4 +61,4 @@ const CheckoutForm = () => {
   );
 };
 
-export default CheckoutForm;
+export default SubCheckoutForm;
