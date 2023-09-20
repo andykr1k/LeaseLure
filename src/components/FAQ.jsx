@@ -1,6 +1,6 @@
 export default function FAQ() {
     return (
-        <div className="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16 space-y-4">
+        <div className="mx-auto max-w-screen-xl py-12 lg:py-16 space-y-4">
             <h2 className="text-center text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
             FAQ            
             </h2>
@@ -47,7 +47,7 @@ export default function FAQ() {
                 </span>
                 </summary>
 
-                <p className="mt-4 leading-relaxed text-gray-700">
+                <p className="mt-4 leading-relaxed text-gray-700 text-left">
                 LeaseLure is an easy-to-use tool to generate rental properties descriptions in seconds.
                 </p>
             </details>
@@ -95,7 +95,7 @@ export default function FAQ() {
                 </span>
                 </summary>
 
-                <p className="mt-4 leading-relaxed text-gray-700">
+                <p className="mt-4 leading-relaxed text-gray-700 text-left">
                 All you need to do is enter the address and watch the magic happen!
                 </p>
             </details>
@@ -142,7 +142,7 @@ export default function FAQ() {
                 </span>
                 </summary>
 
-                <p className="mt-4 leading-relaxed text-gray-700">
+                <p className="mt-4 leading-relaxed text-gray-700 text-left">
                 Since LeaceLure is a digital service, we are not able to participate in refunds. Once you have used the tool, our resources have been used. 
                 </p>
             </details>

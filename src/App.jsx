@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Chat, FAQ, Header, Pricing, Testimonial } from './components'
+import { CTA, Chat, FAQ, Header, Pricing, Testimonial } from './components'
 import { SignIn } from './functions/auth'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import logo from './assets/icon-192-maskable.png'
@@ -27,6 +27,7 @@ export default function App() {
             <img src={logo} className='rounded-xl w-16'/>
             <h1 className='text-center text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl ml-4'>LeaseLure</h1>
           </div>
+          <CTA/>
           <SignIn/>
           <Testimonial/>
           <FAQ/>
