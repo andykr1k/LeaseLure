@@ -7,7 +7,7 @@ export default function header() {
     const [drawer, setDrawer] = useState(false)
     return (
         <header className="bg-white">
-            <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-screen-xl">
                 <div className="flex h-16 items-center justify-between">
                     <div className="flex-1 md:flex md:items-center md:gap-12">
                         <a className="block text-violet-700" href="/">
