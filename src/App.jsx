@@ -38,7 +38,7 @@ export default function App() {
           <Routes>
             <Route path='/' element={<Chat/>} />
             <Route path="/pricing"  element={<Pricing/>} />
-            <Route path='/profile' element={<></>}/>
+            <Route path='/settings' element={<></>}/>
           </Routes>
         </div>
       }

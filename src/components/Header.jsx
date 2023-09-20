@@ -28,12 +28,12 @@ export default function header() {
                             drawer === false ? null : (
                             <div className="absolute grid top-full mt-2 space-y-2 place-items-end">
                                 <motion.a
-                                href='/profile'
+                                href='/settings'
                                 whileHover={{ scale: 1.1 }}
                                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                 className="rounded-md whitespace-nowrap bg-violet-700 px-4 py-2 text-sm font-medium text-white shadow "
                                 >
-                                    Profile
+                                    Settings
                                 </motion.a>
                                 <SignOut/>
                             </div>
