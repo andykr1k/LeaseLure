@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, doc } from 'firebase/firestore/lite';
+import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider, signInWithPopup, OAuthProvider } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
 import { motion } from 'framer-motion';
@@ -27,6 +27,9 @@ export function SignIn() {
           const credential = GoogleAuthProvider.credentialFromResult(result);
           const token = credential.accessToken;
           const user = result.user;
+          if (CheckForUser() === false){
+            SetUpUser();
+          }
         }).catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
@@ -34,32 +37,11 @@ export function SignIn() {
           const credential = GoogleAuthProvider.credentialFromError(error);
         });
     }
-    // const signInWithApple = () => {
-    //   const provider = new OAuthProvider('apple.com');
-    //   provider.addScope('email');
-    //   provider.addScope('name');
-    //   signInWithPopup(auth, provider)
-    //     .then((result) => {
-    //       const user = result.user;
-    //       const credential = OAuthProvider.credentialFromResult(result);
-    //       const accessToken = credential.accessToken;
-    //       const idToken = credential.idToken;
-    //     })
-    //     .catch((error) => {
-    //       const errorCode = error.code;
-    //       const errorMessage = error.message;
-    //       const email = error.customData.email;
-    //       const credential = OAuthProvider.credentialFromError(error);
-    //     });
-    // }
     return (
       <>
         <motion.button whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} className='bg-violet-700 rounded-lg shadow-lg p-3 text-center text-white' onClick={signInWithGoogle}>
             <h4 className=' font-semibold text-md md:text-lg'>Sign In With Google</h4>
         </motion.button>
-        {/* <motion.button whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} className='bg-slate-500 rounded-lg shadow-lg p-3 text-center text-white' onClick={signInWithApple}>
-            <h4 className=' font-semibold text-md md:text-lg'>Sign In With Apple</h4>
-        </motion.button> */}
       </>
     )
   }
@@ -76,13 +58,64 @@ export function SignOut() {
       </motion.button>
     )
 }
- export function WriteUserData() {
+ export function SetUpUser() {
   const uidUsers = "users/" + auth.currentUser.uid
-  const userDocs = doc(firestore, uidUsers)
+  const userDocs = doc(db, uidUsers)
   const docData = {
     name: auth.currentUser.displayName,
     email: auth.currentUser.email,
-    uid: auth.currentUser.uid
+    uid: auth.currentUser.uid,
+    credits: 0,
+    subscribed: false
+  }
+  setDoc(userDocs, docData, { merge: true });
+}
+
+export function CheckCredits() {
+  return false
+}
+
+export async function CheckForUser() {
+  const docRef = doc(db, "users", auth.currentUser.uid);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    return true
+  } else {
+    return false
+  }
+}
+
+export async function getCredits() {
+  const docRef = doc(db, "users", auth.currentUser.uid);
+  const docSnap = await getDoc(docRef);
+
+  return docSnap.data().credits;
+}
+
+export async function getSubscription() {
+  const docRef = doc(db, "users", auth.currentUser.uid);
+  const docSnap = await getDoc(docRef);
+
+  return docSnap.data().subscribed;
+}
+
+export async function ChangeCredits(number) {
+  let credits = await getCredits()
+  let newCredits = credits + number
+  const uidUsers = "users/" + auth.currentUser.uid
+  const userDocs = doc(db, uidUsers)
+  const docData = {
+    credits: newCredits,
+  }
+  setDoc(userDocs, docData, { merge: true });
+}
+
+export async function ChangeSubscriptionType(bool) {
+  const uidUsers = "users/" + auth.currentUser.uid
+  const userDocs = doc(db, uidUsers)
+  const docData = {
+    subscribed: bool,
   }
   setDoc(userDocs, docData, { merge: true });
 }

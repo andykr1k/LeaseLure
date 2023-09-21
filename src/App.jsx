@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CTA, Chat, FAQ, Header, Pricing, Testimonial } from './components'
+import { CTA, Chat, FAQ, Header, Pricing, Settings, Testimonial } from './components'
 import { SignIn } from './functions/auth'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import logo from './assets/icon-192-maskable.png'
@@ -12,7 +12,6 @@ export default function App() {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setUser(user)
-      // const uid = user.uid;
     } else {
       setUser(null)
     }
@@ -38,7 +37,7 @@ export default function App() {
           <Routes>
             <Route path='/' element={<Chat/>} />
             <Route path="/pricing"  element={<Pricing/>} />
-            <Route path='/settings' element={<></>}/>
+            <Route path='/settings' element={<Settings/>}/>
           </Routes>
         </div>
       }

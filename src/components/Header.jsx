@@ -1,10 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import logo from '../assets/icon-192-maskable.png'
-import { SignOut, auth } from '../functions/auth'
+import { SignOut, auth, getCredits, getSubscription } from '../functions/auth'
 import { motion } from 'framer-motion';
 export default function header() {
     const userHighResPhoto = auth.currentUser.photoURL.replace("s96-c", "s400-c", true);
     const [drawer, setDrawer] = useState(false)
+    const [credits, setCredits] = useState(0)
+    const [subscribed, setSubscribed] = useState(false)
+    useEffect(() => {
+        async function fetchCredits() {
+            try {
+                const userCredits = await getCredits();
+                const sub = await getSubscription();
+                setCredits(userCredits);
+                setSubscribed(sub)
+            } catch (error) {
+                console.error('Error fetching credits:', error);
+            }
+        }
+        fetchCredits();
+    }, [])
+
     return (
         <header className="bg-white">
             <div className="mx-auto max-w-screen-xl">
@@ -18,7 +34,11 @@ export default function header() {
 
                     <div className="grid place-items-end relative">
                         <div className='flex'>
-                            <motion.a whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}  href='/pricing' className='mr-3 text-gray-400 grid place-items-center'>0 credits</motion.a>
+                        { subscribed ? 
+                        <motion.a whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}  href='/pricing' className='mr-3 text-gray-400 grid place-items-center'>Subscribed</motion.a>
+                        :
+                            <motion.a whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}  href='/pricing' className='mr-3 text-gray-400 grid place-items-center'>{credits} credits</motion.a>
+                        }
                             <motion.button className='' whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} onClick={() => setDrawer(!drawer)} >
                                 <img className="rounded-3xl w-12" src={userHighResPhoto}
                                     alt="" />

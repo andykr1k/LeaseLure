@@ -1,5 +1,4 @@
 import { CheckoutForm, SubCheckoutForm } from "."
-
 export default function Pricing() {
 
     return (

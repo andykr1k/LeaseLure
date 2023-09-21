@@ -2,6 +2,7 @@ import { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import CardIcon from "../assets/CreditCard.svg";
 import '../index.css'
+import { ChangeSubscriptionType } from "../functions/auth";
 let stripePromise;
 
 const getStripe = () => {
@@ -35,7 +36,11 @@ const SubCheckoutForm = () => {
     const { error } = await stripe.redirectToCheckout(checkoutOptions);
     console.log("Stripe checkout error", error);
 
-    if (error) setStripeError(error.message);
+    if (error){
+      setStripeError(error.message);
+    } else if (paymentIntent && paymentIntent.status === 'succeeded') {
+      ChangeSubscriptionType(true);
+    }
     setLoading(false);
   };
 

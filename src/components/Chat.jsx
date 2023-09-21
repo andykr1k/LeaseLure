@@ -1,17 +1,34 @@
 import { useState } from "react"
 import { Generate } from "../functions/generate"
+import { CheckCredits } from "../functions/auth";
+import Loading from "./Loading";
+
 export default function Chat() {
     const [description, setDescription] = useState('')
     const [input, setInput] = useState('')
-    function generateDescription(){
-        setDescription(Generate(input))
+    const [loading, setLoading] = useState(false)
+    const [generating, setGenerating] = useState(false)
+    async function generateDescription(){
+        setGenerating(true)
+        setLoading(true)
+        if (CheckCredits()) {
+            setDescription(await Generate(input))
+            setLoading(false)
+        } else {
+            setDescription("You have not subscribed and have no credits to generate a listing summary. Click on \"Credits\" next to your profile picture to purchase a subscription or credits.")
+            setLoading(false)
+        }
     }
     return (
         <div className="absolute bottom-0 left-0 right-0 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-screen-xl pb-5 pt-5">
-                <div>
-                    {description}
-                </div>
+                { generating ? 
+                    <div className="rounded-lg text-xs md:text-md lg:text-lg bg-gray-50 mb-5 p-6 shadow-sm sm:p-8 text-left">
+                        {loading ? <Loading/> : description}
+                    </div>
+                    :
+                    null
+                }
                 <div
                     className="overflow-hidden rounded-lg border border-gray-200 shadow-sm focus-within:border-violet-600 focus-within:ring-1 focus-within:ring-violet-600"
                 >
