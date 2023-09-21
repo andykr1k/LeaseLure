@@ -66,9 +66,14 @@ export function SignIn() {
   
 export function SignOut() {
     return auth.currentUser && (
-        <motion.button whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} className='rounded-md bg-violet-700 px-5 py-2.5 text-sm font-medium text-white shadow' onClick={() => auth.signOut()}>
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        className="rounded-md whitespace-nowrap bg-violet-700 px-4 py-2 text-sm font-medium text-white shadow"
+        onClick={() => auth.signOut()}
+      >
         Sign Out
-        </motion.button>
+      </motion.button>
     )
 }
  export function WriteUserData() {
