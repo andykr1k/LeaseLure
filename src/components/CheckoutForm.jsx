@@ -7,7 +7,7 @@ let stripePromise;
 
 const getStripe = () => {
   if (!stripePromise) {
-    stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISH_KEY);
+    stripePromise = loadStripe("sk_test_51Ns9d1IrxCZ9xORcwbRhVbrjyMSYlF4kzwqxG734ASJD6TbFnK6lZUfqHk4v4kRamHPmABNDdrRVcDVxfYJiO9f400AJqX4Guy");
   }
 
   return stripePromise;
