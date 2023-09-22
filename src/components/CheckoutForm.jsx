@@ -24,8 +24,8 @@ const CheckoutForm = () => {
   const checkoutOptions = {
     lineItems: [item],
     mode: "payment",
-    successUrl: `${window.location.origin}/success`,
-    cancelUrl: `${window.location.origin}/cancel`
+    successUrl: `${window.location.origin}/`,
+    cancelUrl: `${window.location.origin}/pricing`
   };
 
   const redirectToCheckout = async () => {
@@ -35,7 +35,7 @@ const CheckoutForm = () => {
     const stripe = await getStripe();
     const { paymentIntent, error } = await stripe.redirectToCheckout(checkoutOptions);
     console.log("Stripe checkout error", error);
-
+    console.log(paymentIntent.status)
     if (error){
       setStripeError(error.message);
     } else if (paymentIntent && paymentIntent.status === 'succeeded') {
