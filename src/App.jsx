@@ -23,7 +23,7 @@ export default function App() {
         ?
         <div className='mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16 space-y-5'>
           <div className="flex items-center justify-center">
-            <img src={logo} className='rounded-xl w-16'/>
+            <img alt='Purple House - LeaseLure Logo' src={logo} className='rounded-xl w-16'/>
             <h1 className='text-center text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl ml-4'>LeaseLure</h1>
           </div>
           <CTA/>

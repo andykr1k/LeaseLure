@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Generate } from "../functions/generate"
-import { CheckCredits } from "../functions/auth";
+import { ChangeCredits, LogMessage, getCredits } from "../functions/auth";
 import Loading from "./Loading";
 
 export default function Chat() {
@@ -11,9 +11,15 @@ export default function Chat() {
     async function generateDescription(){
         setGenerating(true)
         setLoading(true)
-        if (CheckCredits()) {
+        if (await getCredits() > 0) {
             setDescription(await Generate(input))
             setLoading(false)
+            if (await description.length > 300){
+                ChangeCredits(-1)
+                LogMessage(input, await description, true)
+            } else {
+                LogMessage(input, await description, false)
+            }
         } else {
             setDescription("You have not subscribed and have no credits to generate a listing summary. Click on \"Credits\" next to your profile picture to purchase a subscription or credits.")
             setLoading(false)
@@ -35,7 +41,7 @@ export default function Chat() {
                     <div className="flex items-center align-center justify-end gap-2 bg-white p-3">
                     <textarea
                     id="OrderNotes"
-                    className="w-full align-center bg-transparent resize-none border-none px-3 text-sm font-medium focus:outline-none"
+                    className="w-full align-center bg-transparent resize-none border-none px-3 text-sm font-medium focus:outline-none touch-action-manipulation user-select-text"
                     placeholder="Enter the listing address..."
                     onChange={(e) => setInput(e.target.value)}
                     ></textarea>

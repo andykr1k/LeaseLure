@@ -1,9 +1,9 @@
 export default function FAQ() {
     return (
         <div className="mx-auto max-w-screen-xl py-12 lg:py-16 space-y-4">
-            <h2 className="text-center text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+            <h6 className="text-center text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
             FAQ            
-            </h2>
+            </h6>
             <details
                 className="group rounded-lg bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden"
             >

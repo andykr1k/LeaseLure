@@ -40,7 +40,7 @@ export function SignIn() {
     return (
       <>
         <motion.button whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} className='bg-violet-700 rounded-lg shadow-lg p-3 text-center text-white' onClick={signInWithGoogle}>
-            <h4 className=' font-semibold text-md md:text-lg'>Sign In With Google</h4>
+            <p className=' font-semibold text-md md:text-lg'>Sign In With Google</p>
         </motion.button>
       </>
     )
@@ -66,13 +66,10 @@ export function SignOut() {
     email: auth.currentUser.email,
     uid: auth.currentUser.uid,
     credits: 0,
-    subscribed: false
+    subscribed: false,
+    log: []
   }
   setDoc(userDocs, docData, { merge: true });
-}
-
-export function CheckCredits() {
-  return false
 }
 
 export async function CheckForUser() {
@@ -89,7 +86,6 @@ export async function CheckForUser() {
 export async function getCredits() {
   const docRef = doc(db, "users", auth.currentUser.uid);
   const docSnap = await getDoc(docRef);
-
   return docSnap.data().credits;
 }
 
@@ -116,6 +112,18 @@ export async function ChangeSubscriptionType(bool) {
   const userDocs = doc(db, uidUsers)
   const docData = {
     subscribed: bool,
+  }
+  setDoc(userDocs, docData, { merge: true });
+}
+
+export async function LogMessage(input, output, credited) {
+  let time = new Date().toLocaleString().replace(/\//g, "-");
+  const uidUsers = "users/" + auth.currentUser.uid + "/log/" + time
+  const userDocs = doc(db, uidUsers)
+  const docData = {
+    input: input,
+    output: output,
+    credited: credited
   }
   setDoc(userDocs, docData, { merge: true });
 }

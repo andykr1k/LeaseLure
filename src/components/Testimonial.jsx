@@ -2,11 +2,11 @@ export default function Testimonial() {
     return (
         <section className="bg-white">
             <div className="mx-auto max-w-screen-xl py-12 lg:py-16 ">
-                <h2
+                <h5
                 className="text-center text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl"
                 >
                 Read trusted reviews from our customers
-                </h2>
+                </h5>
 
                 <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8">
                 <blockquote className="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8">

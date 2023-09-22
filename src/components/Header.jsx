@@ -22,13 +22,13 @@ export default function header() {
     }, [])
 
     return (
-        <header className="bg-white">
+        <header>
             <div className="mx-auto max-w-screen-xl">
                 <div className="flex h-16 items-center justify-between">
                     <div className="flex-1 md:flex md:items-center md:gap-12">
                         <a className="block text-violet-700" href="/">
                         <span className="sr-only">Home</span>
-                        <motion.img src={logo} whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} className='rounded-xl w-12'/>
+                        <motion.img alt='Purple House - LeaseLure Logo' src={logo} whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} className='rounded-xl w-12'/>
                         </a>
                     </div>
 
@@ -37,11 +37,11 @@ export default function header() {
                         { subscribed ? 
                         <motion.a whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}  href='/pricing' className='mr-3 text-gray-400 grid place-items-center'>Subscribed</motion.a>
                         :
-                            <motion.a whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}  href='/pricing' className='mr-3 text-gray-400 grid place-items-center'>{credits} credits</motion.a>
+                            <motion.a whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}  href='/pricing' className='mr-3 text-gray-600 grid place-items-center'>{credits} credits</motion.a>
                         }
                             <motion.button className='' whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} onClick={() => setDrawer(!drawer)} >
                                 <img className="rounded-3xl w-12" src={userHighResPhoto}
-                                    alt="" />
+                                    alt="User Profile Image From Google" />
                             </motion.button>
                         </div>
                         {
