@@ -39,10 +39,10 @@ const CheckoutForm = () => {
       setStripeError(error.message);
     }
     
-    if (paymentIntent && paymentIntent.status === 'succeeded') {
+    if (await paymentIntent && await paymentIntent.status === 'succeeded') {
       ChangeCredits(1);
     }
-    
+
     setLoading(false);
   };
 
