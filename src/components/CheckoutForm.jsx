@@ -30,17 +30,19 @@ const CheckoutForm = () => {
 
   const redirectToCheckout = async () => {
     setLoading(true);
-    console.log("redirectToCheckout");
 
     const stripe = await getStripe();
     const { paymentIntent, error } = await stripe.redirectToCheckout(checkoutOptions);
     console.log("Stripe checkout error", error);
-    console.log(paymentIntent.status)
-    if (error){
+    
+    if (error) {
       setStripeError(error.message);
-    } else if (paymentIntent && paymentIntent.status === 'succeeded') {
+    }
+    
+    if (paymentIntent && paymentIntent.status === 'succeeded') {
       ChangeCredits(1);
     }
+    
     setLoading(false);
   };
 
