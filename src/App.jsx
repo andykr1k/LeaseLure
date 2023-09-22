@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CTA, Chat, FAQ, Header, Pricing, Settings, Testimonial } from './components'
+import { CTA, Chat, Error, FAQ, Header, Pricing, Settings, Testimonial } from './components'
 import { SignIn } from './functions/auth'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import logo from './assets/icon-192-maskable.png'
@@ -38,6 +38,7 @@ export default function App() {
             <Route path='/' element={<Chat/>} />
             <Route path="/pricing"  element={<Pricing/>} />
             <Route path='/settings' element={<Settings/>}/>
+            <Route path='/*' element={<Error />}/>
           </Routes>
         </div>
       }

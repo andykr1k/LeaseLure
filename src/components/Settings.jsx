@@ -4,7 +4,7 @@ import { getAuth } from "firebase/auth";
 
 export default function Settings() {
   const auth = getAuth();
-
+  
     return (
         <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
             <h2
@@ -13,6 +13,8 @@ export default function Settings() {
             Settings
             </h2>
             <div className="grid space-y-3">
+            {
+                getSubscription() ?
                 <motion.button
                 href='/settings'
                 whileHover={{ scale: 1.1 }}
@@ -21,6 +23,9 @@ export default function Settings() {
                 onClick={(e) => ChangeSubscriptionType(false)}>
                 End Subscription
                 </motion.button>
+                :
+                null
+            }
                 <motion.button
                 href='/settings'
                 whileHover={{ scale: 1.1 }}
