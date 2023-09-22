@@ -17,7 +17,7 @@ const CheckoutForm = () => {
   const [stripeError, setStripeError] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const item = {
-    price: import.meta.env.VITE_ONE_CREDIT_STRIPE_PRICE_ID,
+    price: 'price_1Nt4YDIrxCZ9xORc44HATUll',
     quantity: 1
   };
 
