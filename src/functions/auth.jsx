@@ -97,8 +97,7 @@ export async function getSubscription() {
 }
 
 export async function ChangeCredits(number) {
-  let credits = await getCredits()
-  let newCredits = credits + number
+  let newCredits = await getCredits() + number
   const uidUsers = "users/" + auth.currentUser.uid
   const userDocs = doc(db, uidUsers)
   const docData = {
