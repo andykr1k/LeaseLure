@@ -4,7 +4,7 @@ import { getAuth } from "firebase/auth";
 
 export default function Settings() {
   const auth = getAuth();
-  
+
     return (
         <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
             <h2

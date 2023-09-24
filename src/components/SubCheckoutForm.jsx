@@ -39,7 +39,7 @@ const SubCheckoutForm = () => {
     if (error){
       setStripeError(error.message);
     } else if (paymentIntent && paymentIntent.status === 'succeeded') {
-      ChangeSubscriptionType(true);
+      await ChangeSubscriptionType(true);
     }
     setLoading(false);
   };

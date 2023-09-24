@@ -28,7 +28,7 @@ const CheckoutForm = () => {
     cancelUrl: `${window.location.origin}/pricing`
   };
 
-  const redirectToCheckout = async () => {
+  async function redirectToCheckout(){
     setLoading(true);
 
     const stripe = await getStripe();
@@ -52,7 +52,7 @@ const CheckoutForm = () => {
     <div className="checkout">
       <button
         className="checkout-button"
-        onClick={redirectToCheckout}
+        onClick={(e) => redirectToCheckout(e)}
         disabled={isLoading}
       >
         <div className="grey-circle">
