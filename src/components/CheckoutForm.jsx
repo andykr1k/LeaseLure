@@ -40,7 +40,7 @@ const CheckoutForm = () => {
     }
     
     if (await paymentIntent && await paymentIntent.status === 'succeeded') {
-      ChangeCredits(1);
+      await ChangeCredits(1);
     }
 
     setLoading(false);

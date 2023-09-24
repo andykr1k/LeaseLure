@@ -14,8 +14,8 @@ export default function Chat() {
         if (await getCredits() > 0) {
             setDescription(await Generate(input))
             setLoading(false)
-            if (await description.length > 300){
-                ChangeCredits(-1)
+            if (await description.length > 500){
+                await ChangeCredits(-1)
                 LogMessage(input, await description, true)
             } else {
                 LogMessage(input, await description, false)
