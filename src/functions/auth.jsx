@@ -20,23 +20,24 @@ const analytics = getAnalytics(app);
 export const auth = getAuth(app);
 
 export function SignIn() {
-    const signInWithGoogle = () => {
-      const provider = new GoogleAuthProvider();
-      signInWithPopup(auth, provider)
-        .then((result) => {
-          const credential = GoogleAuthProvider.credentialFromResult(result);
-          const token = credential.accessToken;
-          const user = result.user;
-          if (CheckForUser() === false){
-            SetUpUser();
-          }
-        }).catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          const email = error.customData.email;
-          const credential = GoogleAuthProvider.credentialFromError(error);
-        });
+    const signInWithGoogle = async () => {
+  const provider = new GoogleAuthProvider();
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    const user = result.user;
+    const found = await CheckForUser();
+    if (found === false) {
+      await SetUpUser();
     }
+  } catch (error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    const email = error.customData.email;
+    const credential = GoogleAuthProvider.credentialFromError(error);
+  }
+}
     return (
       <>
         <motion.button whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} className='bg-violet-700 rounded-lg shadow-lg p-3 text-center text-white' onClick={signInWithGoogle}>
@@ -59,7 +60,7 @@ export function SignOut() {
     )
 }
  export function SetUpUser() {
-  const uidUsers = "users/" + auth.currentUser.uid
+  const uidUsers = "users/" + auth.currentUser.email
   const userDocs = doc(db, uidUsers)
   const docData = {
     name: auth.currentUser.displayName,
@@ -67,13 +68,12 @@ export function SignOut() {
     uid: auth.currentUser.uid,
     credits: 0,
     subscribed: false,
-    log: []
   }
   setDoc(userDocs, docData, { merge: true });
 }
 
 export async function CheckForUser() {
-  const docRef = doc(db, "users", auth.currentUser.uid);
+  const docRef = doc(db, "users", auth.currentUser.email);
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists()) {
@@ -84,21 +84,22 @@ export async function CheckForUser() {
 }
 
 export async function getCredits() {
-  const docRef = doc(db, "users", auth.currentUser.uid);
+  const docRef = doc(db, "users", auth.currentUser.email);
   const docSnap = await getDoc(docRef);
   return docSnap.data().credits;
 }
 
 export async function getSubscription() {
-  const docRef = doc(db, "users", auth.currentUser.uid);
+  const docRef = doc(db, "users", auth.currentUser.email);
   const docSnap = await getDoc(docRef);
 
   return docSnap.data().subscribed;
 }
 
 export async function ChangeCredits(number) {
-  let newCredits = await getCredits() + number
-  const uidUsers = "users/" + auth.currentUser.uid
+  const newCredits = await getCredits() + number
+  console.log("New Credits: " + newCredits)
+  const uidUsers = "users/" + auth.currentUser.email
   const userDocs = doc(db, uidUsers)
   const docData = {
     credits: newCredits,
@@ -107,7 +108,7 @@ export async function ChangeCredits(number) {
 }
 
 export async function ChangeSubscriptionType(bool) {
-  const uidUsers = "users/" + auth.currentUser.uid
+  const uidUsers = "users/" + auth.currentUser.email
   const userDocs = doc(db, uidUsers)
   const docData = {
     subscribed: bool,
@@ -117,7 +118,7 @@ export async function ChangeSubscriptionType(bool) {
 
 export async function LogMessage(input, output, credited) {
   let time = new Date().toLocaleString().replace(/\//g, "-");
-  const uidUsers = "users/" + auth.currentUser.uid + "/log/" + time
+  const uidUsers = "users/" + auth.currentUser.email + "/log/" + time
   const userDocs = doc(db, uidUsers)
   const docData = {
     input: input,

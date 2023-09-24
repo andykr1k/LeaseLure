@@ -8,18 +8,29 @@ export default function Chat() {
     const [input, setInput] = useState('')
     const [loading, setLoading] = useState(false)
     const [generating, setGenerating] = useState(false)
+
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            generateDescription();
+        }
+    };
+
     async function generateDescription(){
         setGenerating(true)
         setLoading(true)
         if (await getCredits() > 0) {
-            setDescription(await Generate(input))
-            setLoading(false)
-            if (await description.length > 500){
-                await ChangeCredits(-1)
-                LogMessage(input, await description, true)
+            const generatedDescription = await Generate(input);
+            await setDescription(generatedDescription);
+            const len = generatedDescription.length;
+
+            if (len > 250){
+                await ChangeCredits(-1);
+                await LogMessage(input, generatedDescription, true);
             } else {
-                LogMessage(input, await description, false)
+                await LogMessage(input, generatedDescription, false);
             }
+            setLoading(false)
         } else {
             setDescription("You have not subscribed and have no credits to generate a listing summary. Click on \"Credits\" next to your profile picture to purchase a subscription or credits.")
             setLoading(false)
@@ -40,10 +51,12 @@ export default function Chat() {
                 >
                     <div className="flex items-center align-center justify-end gap-2 bg-white p-3">
                     <textarea
+                    rows="1" 
                     id="OrderNotes"
                     className="w-full align-center bg-transparent resize-none border-none px-3 text-sm font-medium focus:outline-none"
                     placeholder="Enter the listing address..."
                     onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={handleKeyPress}
                     ></textarea>
                     <button
                         type="button"
