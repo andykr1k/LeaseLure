@@ -2,10 +2,9 @@ import { useState } from 'react'
 import { CTA, Chat, Error, FAQ, Header, Pricing, Settings, Testimonial } from './components'
 import { SignIn } from './functions/auth'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import logo from './assets/icon-192-maskable.png'
 import { Routes, Route } from 'react-router-dom'
-
-import './App.css'
+import logo from "./assets/icon-192-maskable.png";
+import "./App.css";
 
 export default function App() {
   const auth = getAuth();
